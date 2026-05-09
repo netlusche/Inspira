@@ -766,6 +766,228 @@ body {
 }
 
 /* ================================================================
+   CATEGORY FILTER
+================================================================ */
+.category-filter {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+    margin-bottom: 1.5rem;
+}
+
+.cat-pill {
+    padding: 0.28rem 0.85rem;
+    border-radius: 999px;
+    border: 1px solid var(--ghost-border);
+    background: var(--ghost-bg);
+    color: var(--muted);
+    font-size: 0.75rem;
+    font-family: inherit;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s, border-color 0.2s;
+    white-space: nowrap;
+}
+.cat-pill:hover {
+    background: var(--ghost-hover);
+    color: var(--text);
+}
+.cat-pill.active {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: var(--accent-fg);
+}
+
+/* ================================================================
+   AUTOPLAY PROGRESS BAR
+================================================================ */
+.autoplay-bar {
+    position: absolute;
+    bottom: 0; left: 0;
+    height: 3px;
+    width: 100%;
+    background: var(--accent);
+    transform-origin: left center;
+    transform: scaleX(1);
+    display: none;
+    border-radius: 0 0 var(--card-radius, 1.5rem) var(--card-radius, 1.5rem);
+}
+.autoplay-bar.running {
+    display: block;
+    animation: autoplayProgress 15s linear forwards;
+}
+@keyframes autoplayProgress {
+    from { transform: scaleX(1); }
+    to   { transform: scaleX(0); }
+}
+.quote-card:hover .autoplay-bar { animation-play-state: paused; }
+
+/* ================================================================
+   VAPORWAVE
+================================================================ */
+@keyframes vaporwaveGrid {
+    from { background-position: 0 0, 0 0, 0 0; }
+    to   { background-position: 0 0, 0 80px, 0 0; }
+}
+@keyframes vaporwaveGlow {
+    0%, 100% { box-shadow: 0 0 10px rgba(255,113,206,0.45), 0 0 35px rgba(255,113,206,0.18), 0 8px 40px rgba(0,0,0,0.6); }
+    50%       { box-shadow: 0 0 18px rgba(0,229,255,0.5),   0 0 55px rgba(0,229,255,0.2),   0 8px 40px rgba(0,0,0,0.6); }
+}
+
+[data-theme="vaporwave"] body::before {
+    content: '';
+    position: fixed;
+    bottom: 0; left: -20%; right: -20%;
+    height: 52%;
+    background-image:
+        linear-gradient(to bottom, transparent 0%, rgba(255,113,206,0.06) 100%),
+        linear-gradient(rgba(255,113,206,0.22) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,229,255,0.12) 1px, transparent 1px);
+    background-size: 100% 100%, 100% 40px, 80px 100%;
+    transform: perspective(360px) rotateX(42deg);
+    transform-origin: bottom center;
+    animation: vaporwaveGrid 2.8s linear infinite;
+    pointer-events: none;
+    z-index: 0;
+}
+
+[data-theme="vaporwave"] .quote-card {
+    animation: vaporwaveGlow 4s ease-in-out infinite;
+}
+[data-theme="vaporwave"] .brand-title {
+    background: linear-gradient(90deg, #ff71ce 0%, #00e5ff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* ================================================================
+   POLARLICHTER
+================================================================ */
+[data-theme="polarlichter"] #matrixCanvas { display: block; opacity: 1; }
+[data-theme="polarlichter"] .orb          { display: none; }
+[data-theme="polarlichter"] .quote-card   {
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+}
+
+/* ================================================================
+   UNDERWATER
+================================================================ */
+[data-theme="underwater"] #matrixCanvas { display: block; opacity: 0.75; }
+[data-theme="underwater"] .orb          { display: none; }
+
+/* Light-ray overlay from above */
+[data-theme="underwater"] body::before {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    height: 55%;
+    background:
+        linear-gradient(168deg, rgba(0,194,212,0.07) 0%, transparent 45%),
+        linear-gradient(192deg, rgba(0,140,255,0.05) 10%, transparent 50%),
+        linear-gradient(178deg, rgba(0,100,200,0.06) 5%, transparent 48%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Caustic shimmer on card */
+@keyframes causticShimmer {
+    0%, 100% { opacity: 0.35; transform: scale(1)    rotate(0deg);  }
+    40%       { opacity: 0.55; transform: scale(1.06) rotate(1.2deg); }
+    70%       { opacity: 0.2;  transform: scale(0.96) rotate(-1deg);  }
+}
+[data-theme="underwater"] .quote-card { position: relative; overflow: hidden; }
+[data-theme="underwater"] .quote-card::before {
+    content: '';
+    position: absolute;
+    top: -25%; left: -10%;
+    width: 120%; height: 55%;
+    background:
+        radial-gradient(ellipse at 38% 30%, rgba(0,194,212,0.2) 0%, transparent 65%),
+        radial-gradient(ellipse at 68% 55%, rgba(0,150,255,0.14) 0%, transparent 55%);
+    animation: causticShimmer 7s ease-in-out infinite;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* ================================================================
+   SYNTHWAVE
+================================================================ */
+@keyframes synthwaveGrid {
+    from { background-position: 0 0, 0 0, 0 0; }
+    to   { background-position: 0 0, 0 -50px, 0 0; }
+}
+@keyframes synthwaveGlow {
+    0%, 100% { box-shadow: 0 0 8px rgba(255,107,53,0.4), 0 0 30px rgba(255,107,53,0.15), 0 8px 40px rgba(0,0,0,0.7); }
+    50%       { box-shadow: 0 0 16px rgba(255,0,128,0.45), 0 0 50px rgba(255,0,128,0.18), 0 8px 40px rgba(0,0,0,0.7); }
+}
+
+/* Retro sunset semicircle */
+[data-theme="synthwave"] body::before {
+    content: '';
+    position: fixed;
+    bottom: -2%; left: 50%;
+    transform: translateX(-50%);
+    width: min(620px, 95vw);
+    height: min(310px, 48vw);
+    background: conic-gradient(
+        from 180deg at 50% 100%,
+        #ff6b35 0deg, #ff3366 38deg, #c000ff 78deg,
+        transparent 90deg, transparent 270deg,
+        #c000ff 282deg, #ff3366 322deg, #ff6b35 360deg
+    );
+    border-radius: 50% 50% 0 0;
+    opacity: 0.32;
+    pointer-events: none;
+    z-index: 0;
+}
+/* Animated grid floor */
+[data-theme="synthwave"] body::after {
+    content: '';
+    position: fixed;
+    bottom: 0; left: -15%; right: -15%;
+    height: 42%;
+    background-image:
+        linear-gradient(to bottom, transparent 0%, rgba(255,107,53,0.05) 100%),
+        linear-gradient(rgba(255,107,53,0.22) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,0,128,0.1) 1px, transparent 1px);
+    background-size: 100% 100%, 100% 25px, 55px 100%;
+    transform: perspective(280px) rotateX(38deg);
+    transform-origin: bottom center;
+    animation: synthwaveGrid 1.4s linear infinite;
+    pointer-events: none;
+    z-index: 0;
+}
+[data-theme="synthwave"] .quote-card { animation: synthwaveGlow 3.5s ease-in-out infinite; }
+[data-theme="synthwave"] .brand-title {
+    background: linear-gradient(90deg, #ff6b35 0%, #ff0080 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* ================================================================
+   PAPIER / WABI-SABI
+================================================================ */
+/* Subtle paper-noise overlay via inline SVG */
+[data-theme="papier"] body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='250' height='250'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='250' height='250' filter='url(%23n)' opacity='0.055'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.9;
+}
+[data-theme="papier"] .orb { filter: blur(130px); opacity: 0.45; }
+[data-theme="papier"] .quote-card {
+    background: rgba(252, 248, 242, 0.92);
+    box-shadow: 2px 4px 22px rgba(80,50,20,0.14), inset 0 1px 0 rgba(255,255,255,0.85);
+}
+[data-theme="papier"] .quote-text   { font-style: italic; }
+[data-theme="papier"] .brand-title  { font-weight: 300; letter-spacing: 0.06em; }
+
+/* ================================================================
    FRUTIGER AERO
 ================================================================ */
 
@@ -868,7 +1090,12 @@ body {
     [data-theme="lcars"] .quote-badge,
     [data-theme="frutiger-aero"] .orb-1,
     [data-theme="frutiger-aero"] .orb-2,
-    [data-theme="frutiger-aero"] .quote-card::after { animation: none; }
+    [data-theme="frutiger-aero"] .quote-card::after,
+    [data-theme="vaporwave"] body::before,
+    [data-theme="vaporwave"] .quote-card,
+    [data-theme="synthwave"] body::after,
+    [data-theme="synthwave"] .quote-card,
+    [data-theme="underwater"] .quote-card::before { animation: none; }
 }
 
 /* ================================================================

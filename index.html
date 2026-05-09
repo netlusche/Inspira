@@ -38,19 +38,25 @@
                     <option value="matrix">Matrix</option>
                     <option value="lcars">LCARS</option>
                     <option value="frutiger-aero">Frutiger Aero</option>
+                    <option value="vaporwave">Vaporwave</option>
+                    <option value="synthwave">Synthwave</option>
+                    <option value="polarlichter">Polarlichter</option>
+                    <option value="underwater">Underwater</option>
+                    <option value="papier">Papier</option>
                 </select>
             </div>
         </header>
 
         <main class="site-main">
 
-            <article class="quote-card" id="quoteCard" aria-label="Aktuelles Zitat">
+            <article class="quote-card" id="quoteCard" aria-label="Aktuelles Zitat" style="position:relative;overflow:hidden;">
                 <div class="quote-card-top">
                     <span class="quote-badge" id="quoteBadge" aria-label="Sprache">DE</span>
                 </div>
                 <span class="quote-mark" aria-hidden="true">"</span>
                 <p class="quote-text" id="quoteText" aria-live="polite" aria-atomic="true"></p>
                 <div class="quote-sep" aria-hidden="true"></div>
+                <div class="autoplay-bar" id="autoplayBar" aria-hidden="true"></div>
                 <div class="quote-author">
                     <div class="author-avatar" id="authorAvatar" aria-hidden="true"></div>
                     <div>
@@ -70,11 +76,17 @@
                 <button class="btn btn-ghost" id="shareBtn" aria-label="Zitat teilen">
                     <span aria-hidden="true">↗</span> Teilen
                 </button>
+                <button class="btn btn-ghost" id="autoplayBtn" aria-pressed="false" aria-label="Autoplay starten">
+                    <span id="autoplayIcon" aria-hidden="true">▶</span>
+                    <span id="autoplayLabel">Autoplay</span>
+                </button>
                 <button class="btn btn-fav" id="favoriteBtn" aria-pressed="false" aria-label="Als Favorit speichern">
                     <span id="favIcon" aria-hidden="true">♡</span>
                     <span id="favLabel">Favorit</span>
                 </button>
             </div>
+
+            <div class="category-filter" id="categoryFilter" role="group" aria-label="Nach Kategorie filtern"></div>
 
             <section class="fav-section" aria-label="Gespeicherte Favoriten">
                 <button class="fav-toggle" id="favToggle" aria-expanded="false" aria-controls="favPanel">

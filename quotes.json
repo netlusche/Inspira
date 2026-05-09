@@ -348,5 +348,355 @@
     "description": "Amerikanischer Präsident",
     "lang": "en",
     "category": "Mut"
+  },
+  {
+    "text": "Der gegenwärtige Moment ist das Einzige, was du je haben wirst.",
+    "author": "Buddha",
+    "description": "Begründer des Buddhismus",
+    "lang": "de",
+    "category": "Achtsamkeit"
+  },
+  {
+    "text": "Der Geist ist alles. Was du denkst, das wirst du.",
+    "author": "Buddha",
+    "description": "Begründer des Buddhismus",
+    "lang": "de",
+    "category": "Mindset"
+  },
+  {
+    "text": "Frieden kommt von innen. Suche ihn nicht außen.",
+    "author": "Buddha",
+    "description": "Begründer des Buddhismus",
+    "lang": "de",
+    "category": "Innere Ruhe"
+  },
+  {
+    "text": "Three things cannot be long hidden: the sun, the moon, and the truth.",
+    "author": "Buddha",
+    "description": "Begründer des Buddhismus",
+    "lang": "en",
+    "category": "Wahrheit"
+  },
+  {
+    "text": "Do not dwell in the past, do not dream of the future, concentrate the mind on the present moment.",
+    "author": "Buddha",
+    "description": "Begründer des Buddhismus",
+    "lang": "en",
+    "category": "Achtsamkeit"
+  },
+  {
+    "text": "You will not be punished for your anger. You will be punished by your anger.",
+    "author": "Buddha",
+    "description": "Begründer des Buddhismus",
+    "lang": "en",
+    "category": "Weisheit"
+  },
+  {
+    "text": "Thousands of candles can be lit from a single candle, and the life of the candle will not be shortened. Happiness never decreases by being shared.",
+    "author": "Buddha",
+    "description": "Begründer des Buddhismus",
+    "lang": "en",
+    "category": "Glück"
+  },
+  {
+    "text": "Even death is not to be feared by one who has lived wisely.",
+    "author": "Buddha",
+    "description": "Begründer des Buddhismus",
+    "lang": "en",
+    "category": "Weisheit"
+  },
+  {
+    "text": "Die Wurzel allen Leidens ist Anhaftung.",
+    "author": "Buddha",
+    "description": "Begründer des Buddhismus",
+    "lang": "de",
+    "category": "Loslassen"
+  },
+  {
+    "text": "If you light a lamp for somebody, it will also brighten your path.",
+    "author": "Buddha",
+    "description": "Begründer des Buddhismus",
+    "lang": "en",
+    "category": "Mitgefühl"
+  },
+  {
+    "text": "Sei — versuche nicht zu werden.",
+    "author": "Osho",
+    "description": "Indischer Mystiker und Philosoph",
+    "lang": "de",
+    "category": "Selbstverwirklichung"
+  },
+  {
+    "text": "Life begins where fear ends.",
+    "author": "Osho",
+    "description": "Indischer Mystiker und Philosoph",
+    "lang": "en",
+    "category": "Mut"
+  },
+  {
+    "text": "The real question is not whether life exists after death. The real question is whether you are alive before death.",
+    "author": "Osho",
+    "description": "Indischer Mystiker und Philosoph",
+    "lang": "en",
+    "category": "Philosophie"
+  },
+  {
+    "text": "Drop the idea of becoming someone, because you are already a masterpiece. You cannot be improved. You have only to come to it, to know it, to realize it.",
+    "author": "Osho",
+    "description": "Indischer Mystiker und Philosoph",
+    "lang": "en",
+    "category": "Selbstverwirklichung"
+  },
+  {
+    "text": "If you love a flower, don't pick it up. Because if you pick it up it dies and it ceases to be what you love.",
+    "author": "Osho",
+    "description": "Indischer Mystiker und Philosoph",
+    "lang": "en",
+    "category": "Liebe"
+  },
+  {
+    "text": "Creativity is the greatest rebellion in existence.",
+    "author": "Osho",
+    "description": "Indischer Mystiker und Philosoph",
+    "lang": "en",
+    "category": "Kreativität"
+  },
+  {
+    "text": "Courage is a love affair with the unknown.",
+    "author": "Osho",
+    "description": "Indischer Mystiker und Philosoph",
+    "lang": "en",
+    "category": "Mut"
+  },
+  {
+    "text": "Das Ziel des Lebens ist es, lebendig zu sein.",
+    "author": "Osho",
+    "description": "Indischer Mystiker und Philosoph",
+    "lang": "de",
+    "category": "Lebensweisheit"
+  },
+  {
+    "text": "Experience life in all possible ways — good-bad, bitter-sweet, dark-light, summer-winter. Experience all the dualities. Don't be afraid of experience, because the more experience you have, the more mature you become.",
+    "author": "Osho",
+    "description": "Indischer Mystiker und Philosoph",
+    "lang": "en",
+    "category": "Wachstum"
+  },
+  {
+    "text": "Nobody is superior, nobody is inferior, but nobody is equal either. People are simply unique, incomparable.",
+    "author": "Osho",
+    "description": "Indischer Mystiker und Philosoph",
+    "lang": "en",
+    "category": "Identität"
+  },
+  {
+    "text": "Aus dir selbst heraus leuchten — das ist Erleuchtung.",
+    "author": "Osho",
+    "description": "Indischer Mystiker und Philosoph",
+    "lang": "de",
+    "category": "Innere Ruhe"
+  },
+  {
+    "text": "Gestern ist Geschichte, morgen ist ein Geheimnis, aber heute ist ein Geschenk. Deshalb nennen wir es die Gegenwart.",
+    "author": "Rumi",
+    "description": "Persischer Mystiker und Dichter",
+    "lang": "de",
+    "category": "Achtsamkeit"
+  },
+  {
+    "text": "Out beyond ideas of wrongdoing and rightdoing, there is a field. I'll meet you there.",
+    "author": "Rumi",
+    "description": "Persischer Mystiker und Dichter",
+    "lang": "en",
+    "category": "Philosophie"
+  },
+  {
+    "text": "Wunde ist der Ort, an dem das Licht in dich eintreten kann.",
+    "author": "Rumi",
+    "description": "Persischer Mystiker und Dichter",
+    "lang": "de",
+    "category": "Resilienz"
+  },
+  {
+    "text": "What you seek is seeking you.",
+    "author": "Rumi",
+    "description": "Persischer Mystiker und Dichter",
+    "lang": "en",
+    "category": "Inspiration"
+  },
+  {
+    "text": "Lebe, als ob alles, was du tust, einen Unterschied macht. Das tut es.",
+    "author": "William James",
+    "description": "Amerikanischer Psychologe und Philosoph",
+    "lang": "de",
+    "category": "Motivation"
+  },
+  {
+    "text": "The journey of a thousand miles begins with a single step.",
+    "author": "Lao Tzu",
+    "description": "Chinesischer Philosoph, Begründer des Taoismus",
+    "lang": "en",
+    "category": "Ausdauer"
+  },
+  {
+    "text": "Wer andere kennt, ist weise. Wer sich selbst kennt, ist erleuchtet.",
+    "author": "Lao Tzu",
+    "description": "Chinesischer Philosoph, Begründer des Taoismus",
+    "lang": "de",
+    "category": "Weisheit"
+  },
+  {
+    "text": "Nature does not hurry, yet everything is accomplished.",
+    "author": "Lao Tzu",
+    "description": "Chinesischer Philosoph, Begründer des Taoismus",
+    "lang": "en",
+    "category": "Geduld"
+  },
+  {
+    "text": "Knowing others is intelligence; knowing yourself is true wisdom. Mastering others is strength; mastering yourself is true power.",
+    "author": "Lao Tzu",
+    "description": "Chinesischer Philosoph, Begründer des Taoismus",
+    "lang": "en",
+    "category": "Weisheit"
+  },
+  {
+    "text": "Du kannst nicht in den Fluss des Lebens steigen, ohne nass zu werden.",
+    "author": "Heraklit",
+    "description": "Griechischer Philosoph",
+    "lang": "de",
+    "category": "Veränderung"
+  },
+  {
+    "text": "You have power over your mind — not outside events. Realize this, and you will find strength.",
+    "author": "Marc Aurel",
+    "description": "Römischer Kaiser und Philosoph",
+    "lang": "en",
+    "category": "Innere Stärke"
+  },
+  {
+    "text": "Verliere keine Zeit damit, dir zu wünschen, dass die Dinge anders wären. Handle.",
+    "author": "Marc Aurel",
+    "description": "Römischer Kaiser und Philosoph",
+    "lang": "de",
+    "category": "Handeln"
+  },
+  {
+    "text": "I've learned that people will forget what you said, people will forget what you did, but people will never forget how you made them feel.",
+    "author": "Maya Angelou",
+    "description": "Amerikanische Dichterin und Bürgerrechtlerin",
+    "lang": "en",
+    "category": "Mitgefühl"
+  },
+  {
+    "text": "You may not control all the events that happen to you, but you can decide not to be reduced by them.",
+    "author": "Maya Angelou",
+    "description": "Amerikanische Dichterin und Bürgerrechtlerin",
+    "lang": "en",
+    "category": "Resilienz"
+  },
+  {
+    "text": "Ich bin kein Produkt meiner Umstände. Ich bin ein Produkt meiner Entscheidungen.",
+    "author": "Stephen Covey",
+    "description": "Amerikanischer Autor und Unternehmensberater",
+    "lang": "de",
+    "category": "Verantwortung"
+  },
+  {
+    "text": "The secret of getting ahead is getting started.",
+    "author": "Mark Twain",
+    "description": "Amerikanischer Schriftsteller",
+    "lang": "en",
+    "category": "Handeln"
+  },
+  {
+    "text": "Das Geheimnis des Vorankommens ist der Anfang.",
+    "author": "Mark Twain",
+    "description": "Amerikanischer Schriftsteller",
+    "lang": "de",
+    "category": "Handeln"
+  },
+  {
+    "text": "Wer mit sich selbst in Einklang ist, ist auch mit der Welt in Einklang.",
+    "author": "Hermann Hesse",
+    "description": "Deutsch-schweizerischer Schriftsteller",
+    "lang": "de",
+    "category": "Innere Ruhe"
+  },
+  {
+    "text": "Ich wollte nur versuchen, das zu leben, was von selber aus mir heraus wollte. Warum war das so sehr schwer?",
+    "author": "Hermann Hesse",
+    "description": "Deutsch-schweizerischer Schriftsteller",
+    "lang": "de",
+    "category": "Selbstverwirklichung"
+  },
+  {
+    "text": "We accept the love we think we deserve.",
+    "author": "Stephen Chbosky",
+    "description": "Amerikanischer Autor",
+    "lang": "en",
+    "category": "Liebe"
+  },
+  {
+    "text": "Alles wird gut, und wenn es nicht gut ist, ist es noch nicht das Ende.",
+    "author": "Oscar Wilde",
+    "description": "Irischer Schriftsteller",
+    "lang": "de",
+    "category": "Optimismus"
+  },
+  {
+    "text": "In order to be irreplaceable, one must always be different.",
+    "author": "Coco Chanel",
+    "description": "Französische Modedesignerin",
+    "lang": "en",
+    "category": "Identität"
+  },
+  {
+    "text": "Der Mut, der nötig ist, um Großes zu tun, ist der Mut, klein anzufangen.",
+    "author": "Rainer Maria Rilke",
+    "description": "Österreichischer Dichter",
+    "lang": "de",
+    "category": "Mut"
+  },
+  {
+    "text": "Ich lebe mein Leben in wachsenden Ringen, die sich über die Dinge der Welt ziehn.",
+    "author": "Rainer Maria Rilke",
+    "description": "Österreichischer Dichter",
+    "lang": "de",
+    "category": "Inspiration"
+  },
+  {
+    "text": "It is not the mountain we conquer, but ourselves.",
+    "author": "Edmund Hillary",
+    "description": "Neuseeländischer Bergsteiger",
+    "lang": "en",
+    "category": "Innere Stärke"
+  },
+  {
+    "text": "The most common form of despair is not being who you are.",
+    "author": "Søren Kierkegaard",
+    "description": "Dänischer Philosoph",
+    "lang": "en",
+    "category": "Identität"
+  },
+  {
+    "text": "Zwischen Reiz und Reaktion liegt ein Raum. In diesem Raum liegt unsere Freiheit.",
+    "author": "Viktor Frankl",
+    "description": "Österreichischer Psychiater",
+    "lang": "de",
+    "category": "Freiheit"
+  },
+  {
+    "text": "Stars can't shine without darkness.",
+    "author": "D.H. Sidebottom",
+    "description": "Britische Autorin",
+    "lang": "en",
+    "category": "Resilienz"
+  },
+  {
+    "text": "Nicht was wir erleben, sondern wie wir empfinden, was wir erleben, macht unser Schicksal aus.",
+    "author": "Marie von Ebner-Eschenbach",
+    "description": "Österreichische Schriftstellerin",
+    "lang": "de",
+    "category": "Lebensweisheit"
   }
 ]

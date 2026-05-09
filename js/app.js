@@ -9,31 +9,40 @@
     /* ============================================================
        DOM-REFERENZEN
     ============================================================ */
-    var quoteCard    = document.getElementById('quoteCard');
-    var quoteTextEl  = document.getElementById('quoteText');
-    var quoteBadgeEl = document.getElementById('quoteBadge');
-    var authorAvEl   = document.getElementById('authorAvatar');
-    var authorNameEl = document.getElementById('authorName');
-    var authorDescEl = document.getElementById('authorDesc');
-    var newQuoteBtn  = document.getElementById('newQuoteBtn');
-    var copyBtn      = document.getElementById('copyBtn');
-    var shareBtn     = document.getElementById('shareBtn');
-    var favBtn       = document.getElementById('favoriteBtn');
-    var favIconEl    = document.getElementById('favIcon');
-    var favLabelEl   = document.getElementById('favLabel');
-    var favToggle    = document.getElementById('favToggle');
-    var favPanel     = document.getElementById('favPanel');
-    var favEmptyEl   = document.getElementById('favEmpty');
-    var favListEl    = document.getElementById('favList');
-    var favCountEl   = document.getElementById('favCount');
-    var toastEl      = document.getElementById('toast');
+    var quoteCard      = document.getElementById('quoteCard');
+    var quoteTextEl    = document.getElementById('quoteText');
+    var quoteBadgeEl   = document.getElementById('quoteBadge');
+    var authorAvEl     = document.getElementById('authorAvatar');
+    var authorNameEl   = document.getElementById('authorName');
+    var authorDescEl   = document.getElementById('authorDesc');
+    var newQuoteBtn    = document.getElementById('newQuoteBtn');
+    var copyBtn        = document.getElementById('copyBtn');
+    var shareBtn       = document.getElementById('shareBtn');
+    var favBtn         = document.getElementById('favoriteBtn');
+    var favIconEl      = document.getElementById('favIcon');
+    var favLabelEl     = document.getElementById('favLabel');
+    var favToggle      = document.getElementById('favToggle');
+    var favPanel       = document.getElementById('favPanel');
+    var favEmptyEl     = document.getElementById('favEmpty');
+    var favListEl      = document.getElementById('favList');
+    var favCountEl     = document.getElementById('favCount');
+    var toastEl        = document.getElementById('toast');
+    var autoplayBtn    = document.getElementById('autoplayBtn');
+    var autoplayIconEl = document.getElementById('autoplayIcon');
+    var autoplayLblEl  = document.getElementById('autoplayLabel');
+    var autoplayBarEl  = document.getElementById('autoplayBar');
+    var categoryFilterEl = document.getElementById('categoryFilter');
 
     /* ============================================================
        STATE
     ============================================================ */
-    var quotes       = [];
-    var currentQuote = null;
-    var favorites    = [];
+    var quotes          = [];
+    var currentQuote    = null;
+    var favorites       = [];
+    var activeCategory  = 'alle';
+    var autoplayActive  = false;
+    var autoplayTimer   = null;
+    var AUTOPLAY_MS     = 15000;
 
     try { favorites = JSON.parse(localStorage.getItem(FAV_KEY)) || []; }
     catch (e) { favorites = []; }
@@ -106,15 +115,99 @@
         }, 220);
     }
 
-    function showRandomQuote() {
-        if (!quotes.length) return;
-        var next;
-        if (quotes.length > 1) {
-            do {
-                next = quotes[Math.floor(Math.random() * quotes.length)];
-            } while (next === currentQuote);
+    /* ============================================================
+       KATEGORIE-FILTER
+    ============================================================ */
+    function getFilteredQuotes() {
+        if (activeCategory === 'alle') return quotes;
+        return quotes.filter(function (q) { return q.category === activeCategory; });
+    }
+
+    function initCategoryFilter() {
+        var seen = {};
+        var cats = [];
+        quotes.forEach(function (q) {
+            if (q.category && !seen[q.category]) { seen[q.category] = true; cats.push(q.category); }
+        });
+        cats.sort();
+
+        categoryFilterEl.innerHTML = '';
+        ['Alle'].concat(cats).forEach(function (cat) {
+            var key = cat === 'Alle' ? 'alle' : cat;
+            var btn = document.createElement('button');
+            btn.className = 'cat-pill' + (key === activeCategory ? ' active' : '');
+            btn.textContent = cat;
+            btn.setAttribute('data-cat', key);
+            btn.addEventListener('click', function () {
+                categoryFilterEl.querySelectorAll('.cat-pill').forEach(function (p) { p.classList.remove('active'); });
+                btn.classList.add('active');
+                activeCategory = key;
+                showRandomQuote();
+                if (autoplayActive) resetAutoplayBar();
+            });
+            categoryFilterEl.appendChild(btn);
+        });
+    }
+
+    /* ============================================================
+       AUTOPLAY
+    ============================================================ */
+    function resetAutoplayBar() {
+        autoplayBarEl.classList.remove('running');
+        void autoplayBarEl.offsetWidth;
+        autoplayBarEl.classList.add('running');
+    }
+
+    function startAutoplay() {
+        autoplayActive = true;
+        autoplayBtn.classList.add('is-playing');
+        autoplayBtn.setAttribute('aria-pressed', 'true');
+        autoplayIconEl.textContent = '⏸';
+        autoplayLblEl.textContent  = 'Pause';
+        resetAutoplayBar();
+        autoplayTimer = setInterval(function () {
+            showRandomQuote();
+            resetAutoplayBar();
+        }, AUTOPLAY_MS);
+    }
+
+    function stopAutoplay() {
+        autoplayActive = false;
+        clearInterval(autoplayTimer);
+        autoplayTimer = null;
+        autoplayBtn.classList.remove('is-playing');
+        autoplayBtn.setAttribute('aria-pressed', 'false');
+        autoplayIconEl.textContent = '▶';
+        autoplayLblEl.textContent  = 'Autoplay';
+        autoplayBarEl.classList.remove('running');
+    }
+
+    function toggleAutoplay() {
+        if (autoplayActive) stopAutoplay(); else startAutoplay();
+    }
+
+    document.addEventListener('visibilitychange', function () {
+        if (!autoplayActive) return;
+        if (document.hidden) {
+            clearInterval(autoplayTimer);
+            autoplayBarEl.style.animationPlayState = 'paused';
         } else {
-            next = quotes[0];
+            autoplayBarEl.style.animationPlayState = 'running';
+            autoplayTimer = setInterval(function () {
+                showRandomQuote();
+                resetAutoplayBar();
+            }, AUTOPLAY_MS);
+        }
+    });
+
+    function showRandomQuote() {
+        var pool = getFilteredQuotes();
+        if (!pool.length) return;
+        var next;
+        if (pool.length > 1) {
+            do { next = pool[Math.floor(Math.random() * pool.length)]; } while (next === currentQuote);
+        } else {
+            next = pool[0];
         }
         showQuote(next);
     }
@@ -305,6 +398,7 @@
             })
             .then(function (data) {
                 quotes = data;
+                initCategoryFilter();
                 renderQuote(quotes[Math.floor(Math.random() * quotes.length)]);
                 updateFavCount();
             })
@@ -322,6 +416,7 @@
     copyBtn.addEventListener('click', copyQuote);
     shareBtn.addEventListener('click', shareQuote);
     favBtn.addEventListener('click', toggleFav);
+    autoplayBtn.addEventListener('click', toggleAutoplay);
 
     init();
 })();
