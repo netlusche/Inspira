@@ -810,9 +810,65 @@
         const themeSelect  = document.getElementById('themeSelect');
 
         /* ============================================================
+           ZITATE (eingebettet – kein Server nötig)
+        ============================================================ */
+        const QUOTES = [
+          { text: "Die größte Gefahr für die Zukunft ist, dass man aufhört, an sie zu glauben.", author: "Alphonse de Lamartine", description: "Französischer Dichter und Politiker", lang: "de", category: "Zukunft" },
+          { text: "Die Fantasie ist wichtiger als Wissen, denn Wissen ist begrenzt.", author: "Albert Einstein", description: "Deutsch-amerikanischer Physiker", lang: "de", category: "Kreativität" },
+          { text: "Man sieht nur mit dem Herzen gut. Das Wesentliche ist für die Augen unsichtbar.", author: "Antoine de Saint-Exupéry", description: "Französischer Schriftsteller", lang: "de", category: "Liebe" },
+          { text: "Das Glück besteht nicht darin, dass man tut, was man will, sondern darin, dass man immer will, was man tut.", author: "Johann Wolfgang von Goethe", description: "Deutscher Dichter und Naturforscher", lang: "de", category: "Glück" },
+          { text: "Der Weg ist das Ziel.", author: "Konfuzius", description: "Chinesischer Philosoph", lang: "de", category: "Lebensweisheit" },
+          { text: "Das Leben ist wie ein Fahrrad: Um die Balance zu halten, muss man in Bewegung bleiben.", author: "Albert Einstein", description: "Physiker und Nobelpreisträger", lang: "de", category: "Lebensweisheit" },
+          { text: "Wer nicht weiß, wohin er will, dem ist jeder Wind recht.", author: "Seneca", description: "Römischer Philosoph", lang: "de", category: "Philosophie" },
+          { text: "Die Kunst ist eine Lüge, die uns die Wahrheit zeigt.", author: "Pablo Picasso", description: "Spanischer Maler und Bildhauer", lang: "de", category: "Kreativität" },
+          { text: "Wer einen Fehler macht und ihn nicht korrigiert, macht einen zweiten.", author: "Konfuzius", description: "Chinesischer Philosoph", lang: "de", category: "Weisheit" },
+          { text: "Die beste Art, die Zukunft vorherzusagen, ist, sie selbst zu gestalten.", author: "Peter Drucker", description: "Management-Theoretiker", lang: "de", category: "Erfolg" },
+          { text: "Wer nichts riskiert, riskiert am Ende alles zu verlieren.", author: "Nelson Mandela", description: "Südafrikanischer Freiheitskämpfer", lang: "de", category: "Mut" },
+          { text: "Die Zeit vergeht, die Erinnerungen bleiben.", author: "Friedrich Schiller", description: "Deutscher Dichter und Philosoph", lang: "de", category: "Zeit" },
+          { text: "Das Glück ist nicht etwas Fertiges. Es kommt aus unseren eigenen Handlungen.", author: "Mahatma Gandhi", description: "Indischer Freiheitskämpfer", lang: "de", category: "Glück" },
+          { text: "Der Mensch ist frei geboren und überall in Ketten.", author: "Jean-Jacques Rousseau", description: "Französischer Philosoph", lang: "de", category: "Philosophie" },
+          { text: "Die Welt gehört denen, die sich trauen.", author: "Johann Wolfgang von Goethe", description: "Deutscher Dichter und Naturforscher", lang: "de", category: "Mut" },
+          { text: "Werde, der du bist.", author: "Friedrich Nietzsche", description: "Deutscher Philosoph", lang: "de", category: "Selbstverwirklichung" },
+          { text: "Erkenne dich selbst.", author: "Sokrates", description: "Griechischer Philosoph", lang: "de", category: "Philosophie" },
+          { text: "Anfangen ist leicht, Beharren ist Kunst.", author: "Deutsches Sprichwort", description: "Volksweisheit", lang: "de", category: "Ausdauer" },
+          { text: "Wer kämpft, kann verlieren. Wer nicht kämpft, hat schon verloren.", author: "Bertolt Brecht", description: "Deutscher Dramatiker", lang: "de", category: "Mut" },
+          { text: "Die Weisheit ist die Tochter der Erfahrung.", author: "Leonardo da Vinci", description: "Italienischer Universalgelehrter", lang: "de", category: "Weisheit" },
+          { text: "Alles, was wir hören, ist eine Meinung, keine Tatsache. Alles, was wir sehen, ist eine Perspektive, keine Wahrheit.", author: "Marc Aurel", description: "Römischer Kaiser und Philosoph", lang: "de", category: "Philosophie" },
+          { text: "Lebe so, als würdest du morgen sterben. Lerne so, als würdest du ewig leben.", author: "Mahatma Gandhi", description: "Indischer Freiheitskämpfer", lang: "de", category: "Lebensweisheit" },
+          { text: "Der Sinn des Lebens ist es, deinem Leben einen Sinn zu geben.", author: "Viktor Frankl", description: "Österreichischer Psychiater", lang: "de", category: "Philosophie" },
+          { text: "Nicht die Verhältnisse machen den Menschen, sondern der Mensch macht die Verhältnisse.", author: "Karl Marx", description: "Deutscher Philosoph und Ökonom", lang: "de", category: "Veränderung" },
+          { text: "Tue jeden Tag etwas, das dich ängstigt.", author: "Eleanor Roosevelt", description: "Amerikanische Politikerin und Humanistin", lang: "de", category: "Mut" },
+          { text: "Das einzig Beständige ist die Veränderung.", author: "Heraklit", description: "Griechischer Philosoph", lang: "de", category: "Veränderung" },
+          { text: "Wer aufhört zu lernen, ist alt – ob mit zwanzig oder achtzig.", author: "Henry Ford", description: "Amerikanischer Unternehmer", lang: "de", category: "Wachstum" },
+          { text: "Das Leben ist wie ein Buch: Die besten Seiten sind die, die man selbst schreibt.", author: "Henry Ward Beecher", description: "Amerikanischer Geistlicher", lang: "de", category: "Lebensweisheit" },
+          { text: "Wer den Himmel sucht, muss in die Höhe schauen.", author: "Leonardo da Vinci", description: "Italienischer Universalgelehrter", lang: "de", category: "Inspiration" },
+          { text: "Das Leben ist zu kurz, um es mit Gleichgültigkeit zu verbringen.", author: "Oscar Wilde", description: "Irischer Schriftsteller", lang: "de", category: "Lebensweisheit" },
+          { text: "The only way to do great work is to love what you do.", author: "Steve Jobs", description: "Mitbegründer von Apple", lang: "en", category: "Erfolg" },
+          { text: "In three words I can sum up everything I've learned about life: it goes on.", author: "Robert Frost", description: "Amerikanischer Dichter", lang: "en", category: "Lebensweisheit" },
+          { text: "Be yourself; everyone else is already taken.", author: "Oscar Wilde", description: "Irischer Schriftsteller", lang: "en", category: "Identität" },
+          { text: "It always seems impossible until it's done.", author: "Nelson Mandela", description: "Südafrikanischer Freiheitskämpfer", lang: "en", category: "Mut" },
+          { text: "The future belongs to those who believe in the beauty of their dreams.", author: "Eleanor Roosevelt", description: "Amerikanische Humanistin", lang: "en", category: "Träume" },
+          { text: "Not everything that is faced can be changed, but nothing can be changed until it is faced.", author: "James Baldwin", description: "Amerikanischer Schriftsteller", lang: "en", category: "Veränderung" },
+          { text: "Simplicity is the ultimate sophistication.", author: "Leonardo da Vinci", description: "Italienischer Universalgelehrter", lang: "en", category: "Kreativität" },
+          { text: "The greatest glory in living lies not in never falling, but in rising every time we fall.", author: "Nelson Mandela", description: "Südafrikanischer Freiheitskämpfer", lang: "en", category: "Resilienz" },
+          { text: "What you get by achieving your goals is not as important as what you become by achieving your goals.", author: "Henry David Thoreau", description: "Amerikanischer Schriftsteller", lang: "en", category: "Wachstum" },
+          { text: "Two roads diverged in a wood, and I — I took the one less traveled by, and that has made all the difference.", author: "Robert Frost", description: "Amerikanischer Dichter", lang: "en", category: "Mut" },
+          { text: "You must be the change you wish to see in the world.", author: "Mahatma Gandhi", description: "Indischer Freiheitskämpfer", lang: "en", category: "Veränderung" },
+          { text: "In the middle of every difficulty lies opportunity.", author: "Albert Einstein", description: "Physiker und Nobelpreisträger", lang: "en", category: "Resilienz" },
+          { text: "The unexamined life is not worth living.", author: "Sokrates", description: "Griechischer Philosoph", lang: "en", category: "Philosophie" },
+          { text: "We are what we repeatedly do. Excellence, then, is not an act, but a habit.", author: "Aristoteles", description: "Griechischer Philosoph", lang: "en", category: "Erfolg" },
+          { text: "The only true wisdom is in knowing you know nothing.", author: "Sokrates", description: "Griechischer Philosoph", lang: "en", category: "Weisheit" },
+          { text: "Happiness is not something ready-made. It comes from your own actions.", author: "Dalai Lama", description: "Tibetischer Geistlicher", lang: "en", category: "Glück" },
+          { text: "Life is what happens when you're busy making other plans.", author: "John Lennon", description: "Britischer Musiker", lang: "en", category: "Lebensweisheit" },
+          { text: "Whether you think you can or think you can't, you're right.", author: "Henry Ford", description: "Amerikanischer Unternehmer", lang: "en", category: "Mindset" },
+          { text: "Tell me and I forget. Teach me and I remember. Involve me and I learn.", author: "Benjamin Franklin", description: "Amerikanischer Staatsmann", lang: "en", category: "Wachstum" },
+          { text: "The only limit to our realization of tomorrow is our doubts of today.", author: "Franklin D. Roosevelt", description: "Amerikanischer Präsident", lang: "en", category: "Mut" }
+        ];
+
+        /* ============================================================
            STATE
         ============================================================ */
-        let quotes       = [];
+        let quotes       = QUOTES;
         let currentQuote = null;
         let favorites    = [];
 
@@ -1093,24 +1149,11 @@
         }
 
         /* ============================================================
-           ZITATE LADEN & INITIALISIERUNG
+           INITIALISIERUNG
         ============================================================ */
         function init() {
-            fetch('quotes.json')
-                .then(function (res) {
-                    if (!res.ok) throw new Error('HTTP ' + res.status);
-                    return res.json();
-                })
-                .then(function (data) {
-                    quotes = data;
-                    renderQuote(quotes[Math.floor(Math.random() * quotes.length)]);
-                    updateFavCount();
-                })
-                .catch(function () {
-                    quoteTextEl.textContent  = 'Zitate konnten nicht geladen werden.';
-                    authorNameEl.textContent = '';
-                    authorDescEl.textContent = '';
-                });
+            renderQuote(quotes[Math.floor(Math.random() * quotes.length)]);
+            updateFavCount();
         }
 
         /* ============================================================
