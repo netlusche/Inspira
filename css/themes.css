@@ -82,6 +82,118 @@
     --toast-fg:      #0f172a;
 }
 
+[data-theme="cyberpunk"] {
+    --bg-a:          #05000f;
+    --bg-b:          #0d0020;
+    --card-bg:       rgba(5, 0, 20, 0.75);
+    --card-border:   rgba(0, 255, 255, 0.5);
+    --card-glow:     rgba(0, 255, 255, 0.12);
+    --text:          #e0e0ff;
+    --muted:         #8877bb;
+    --accent:        #ff0099;
+    --accent-dark:   #cc0077;
+    --accent-fg:     #ffffff;
+    --orb-a:         rgba(255, 0, 153, 0.18);
+    --orb-b:         rgba(0, 255, 255, 0.12);
+    --divider:       rgba(0, 255, 255, 0.15);
+    --fav-bg:        rgba(0, 255, 255, 0.04);
+    --badge-bg:      rgba(0, 255, 255, 0.15);
+    --badge-fg:      #00ffff;
+    --ghost-bg:      rgba(0, 255, 255, 0.06);
+    --ghost-border:  rgba(0, 255, 255, 0.25);
+    --ghost-fg:      #e0e0ff;
+    --ghost-hover:   rgba(0, 255, 255, 0.12);
+    --select-bg:     rgba(5, 0, 20, 0.8);
+    --shadow:        rgba(0, 0, 0, 0.8);
+    --shadow-accent: rgba(255, 0, 153, 0.4);
+    --toast-bg:      #00ffff;
+    --toast-fg:      #05000f;
+}
+
+[data-theme="matrix"] {
+    --bg-a:          #000000;
+    --bg-b:          #000800;
+    --card-bg:       rgba(0, 15, 0, 0.8);
+    --card-border:   rgba(0, 255, 65, 0.25);
+    --card-glow:     rgba(0, 255, 65, 0.08);
+    --text:          #00ff41;
+    --muted:         #008f11;
+    --accent:        #00ff41;
+    --accent-dark:   #00cc33;
+    --accent-fg:     #000000;
+    --orb-a:         rgba(0, 255, 65, 0.06);
+    --orb-b:         rgba(0, 180, 30, 0.04);
+    --divider:       rgba(0, 255, 65, 0.15);
+    --fav-bg:        rgba(0, 255, 65, 0.04);
+    --badge-bg:      rgba(0, 255, 65, 0.12);
+    --badge-fg:      #00ff41;
+    --ghost-bg:      rgba(0, 255, 65, 0.05);
+    --ghost-border:  rgba(0, 255, 65, 0.2);
+    --ghost-fg:      #00ff41;
+    --ghost-hover:   rgba(0, 255, 65, 0.1);
+    --select-bg:     rgba(0, 15, 0, 0.85);
+    --shadow:        rgba(0, 0, 0, 0.9);
+    --shadow-accent: rgba(0, 255, 65, 0.2);
+    --toast-bg:      #00ff41;
+    --toast-fg:      #000000;
+}
+
+[data-theme="lcars"] {
+    --bg-a:          #000000;
+    --bg-b:          #050010;
+    --card-bg:       rgba(0, 0, 8, 0.92);
+    --card-border:   rgba(255, 153, 0, 0.7);
+    --card-glow:     rgba(255, 153, 0, 0.08);
+    --text:          #ffffff;
+    --muted:         #cc88ff;
+    --accent:        #ff9900;
+    --accent-dark:   #cc7700;
+    --accent-fg:     #000000;
+    --orb-a:         rgba(255, 153, 0, 0.06);
+    --orb-b:         rgba(204, 136, 255, 0.05);
+    --divider:       rgba(255, 153, 0, 0.25);
+    --fav-bg:        rgba(255, 153, 0, 0.05);
+    --badge-bg:      rgba(204, 136, 255, 0.2);
+    --badge-fg:      #cc88ff;
+    --ghost-bg:      rgba(255, 153, 0, 0.07);
+    --ghost-border:  rgba(255, 153, 0, 0.35);
+    --ghost-fg:      #ffffff;
+    --ghost-hover:   rgba(255, 153, 0, 0.14);
+    --select-bg:     rgba(0, 0, 8, 0.9);
+    --shadow:        rgba(0, 0, 0, 0.95);
+    --shadow-accent: rgba(255, 153, 0, 0.25);
+    --toast-bg:      #ff9900;
+    --toast-fg:      #000000;
+}
+
+[data-theme="frutiger-aero"] {
+    --bg-a:          #b8e4f9;
+    --bg-b:          #d4f0c0;
+    --card-bg:       rgba(255, 255, 255, 0.72);
+    --card-border:   rgba(255, 255, 255, 0.95);
+    --card-glow:     rgba(80, 200, 240, 0.18);
+    --text:          #0d3b5e;
+    --muted:         #3a7ca5;
+    --accent:        #00b4d8;
+    --accent-dark:   #0096c7;
+    --accent-fg:     #ffffff;
+    --orb-a:         rgba(100, 210, 255, 0.55);
+    --orb-b:         rgba(120, 230, 160, 0.45);
+    --divider:       rgba(0, 140, 200, 0.18);
+    --fav-bg:        rgba(255, 255, 255, 0.55);
+    --badge-bg:      rgba(0, 180, 216, 0.15);
+    --badge-fg:      #0077a8;
+    --ghost-bg:      rgba(255, 255, 255, 0.5);
+    --ghost-border:  rgba(0, 140, 200, 0.3);
+    --ghost-fg:      #0d3b5e;
+    --ghost-hover:   rgba(0, 180, 216, 0.12);
+    --select-bg:     rgba(255, 255, 255, 0.7);
+    --shadow:        rgba(0, 80, 140, 0.18);
+    --shadow-accent: rgba(0, 180, 216, 0.3);
+    --toast-bg:      #0d3b5e;
+    --toast-fg:      #e8f8ff;
+}
+
 [data-theme="aurora"] {
     --bg-a:          #051937;
     --bg-b:          #160a2e;
