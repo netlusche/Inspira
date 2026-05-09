@@ -1,0 +1,111 @@
+/*
+ * themes.css – CSS Custom Properties pro Theme
+ *
+ * Neues Theme hinzufügen:
+ *   1. Neuen [data-theme="name"] Block hier ergänzen
+ *   2. Option in index.html > #themeSelect eintragen
+ *
+ * Pflichtfelder je Theme:
+ *   --bg-a / --bg-b        Hintergrundverlauf (von / bis)
+ *   --card-bg              Glassmorphism-Kartenhintergrund
+ *   --card-border          Kartenrahmen
+ *   --card-glow            Glow hinter der Karte
+ *   --text                 Haupttextfarbe
+ *   --muted                Sekundärtextfarbe
+ *   --accent               Akzentfarbe (Buttons, Badges, Avatar)
+ *   --accent-dark          Dunklere Akzentfarbe (Hover)
+ *   --accent-fg            Textfarbe auf Akzentflächen
+ *   --orb-a / --orb-b      Hintergrund-Orb-Farben
+ *   --divider              Trennlinienfarbe
+ *   --fav-bg               Hintergrund Favoritenlisten-Einträge
+ *   --badge-bg / --badge-fg  Sprach-Badge
+ *   --ghost-bg / --ghost-border / --ghost-fg / --ghost-hover  Ghost-Buttons
+ *   --select-bg            Theme-Dropdown Hintergrund
+ *   --shadow               Allgemeiner Schlagschatten
+ *   --shadow-accent        Akzentfarbener Schlagschatten
+ *   --toast-bg / --toast-fg  Toast-Notification
+ */
+
+[data-theme="hell"] {
+    --bg-a:          #dbeafe;
+    --bg-b:          #ede9fe;
+    --card-bg:       rgba(255, 255, 255, 0.65);
+    --card-border:   rgba(255, 255, 255, 0.85);
+    --card-glow:     rgba(99, 102, 241, 0.08);
+    --text:          #1e293b;
+    --muted:         #64748b;
+    --accent:        #6366f1;
+    --accent-dark:   #4f46e5;
+    --accent-fg:     #ffffff;
+    --orb-a:         rgba(99, 102, 241, 0.22);
+    --orb-b:         rgba(236, 72, 153, 0.12);
+    --divider:       rgba(100, 116, 139, 0.18);
+    --fav-bg:        rgba(255, 255, 255, 0.5);
+    --badge-bg:      rgba(99, 102, 241, 0.12);
+    --badge-fg:      #4f46e5;
+    --ghost-bg:      rgba(255, 255, 255, 0.45);
+    --ghost-border:  rgba(100, 116, 139, 0.25);
+    --ghost-fg:      #1e293b;
+    --ghost-hover:   rgba(99, 102, 241, 0.08);
+    --select-bg:     rgba(255, 255, 255, 0.65);
+    --shadow:        rgba(100, 116, 139, 0.2);
+    --shadow-accent: rgba(99, 102, 241, 0.28);
+    --toast-bg:      #1e293b;
+    --toast-fg:      #f8fafc;
+}
+
+[data-theme="dunkel"] {
+    --bg-a:          #0f172a;
+    --bg-b:          #1e1b4b;
+    --card-bg:       rgba(255, 255, 255, 0.06);
+    --card-border:   rgba(255, 255, 255, 0.1);
+    --card-glow:     rgba(129, 140, 248, 0.12);
+    --text:          #f1f5f9;
+    --muted:         #94a3b8;
+    --accent:        #818cf8;
+    --accent-dark:   #6366f1;
+    --accent-fg:     #ffffff;
+    --orb-a:         rgba(99, 102, 241, 0.28);
+    --orb-b:         rgba(167, 139, 250, 0.18);
+    --divider:       rgba(255, 255, 255, 0.08);
+    --fav-bg:        rgba(255, 255, 255, 0.04);
+    --badge-bg:      rgba(129, 140, 248, 0.18);
+    --badge-fg:      #a5b4fc;
+    --ghost-bg:      rgba(255, 255, 255, 0.07);
+    --ghost-border:  rgba(255, 255, 255, 0.11);
+    --ghost-fg:      #f1f5f9;
+    --ghost-hover:   rgba(129, 140, 248, 0.1);
+    --select-bg:     rgba(255, 255, 255, 0.08);
+    --shadow:        rgba(0, 0, 0, 0.5);
+    --shadow-accent: rgba(99, 102, 241, 0.3);
+    --toast-bg:      #f1f5f9;
+    --toast-fg:      #0f172a;
+}
+
+[data-theme="aurora"] {
+    --bg-a:          #051937;
+    --bg-b:          #160a2e;
+    --card-bg:       rgba(255, 255, 255, 0.05);
+    --card-border:   rgba(52, 211, 153, 0.2);
+    --card-glow:     rgba(52, 211, 153, 0.08);
+    --text:          #ecfdf5;
+    --muted:         #6ee7b7;
+    --accent:        #34d399;
+    --accent-dark:   #10b981;
+    --accent-fg:     #064e3b;
+    --orb-a:         rgba(52, 211, 153, 0.18);
+    --orb-b:         rgba(167, 139, 250, 0.22);
+    --divider:       rgba(52, 211, 153, 0.12);
+    --fav-bg:        rgba(52, 211, 153, 0.05);
+    --badge-bg:      rgba(52, 211, 153, 0.15);
+    --badge-fg:      #34d399;
+    --ghost-bg:      rgba(52, 211, 153, 0.08);
+    --ghost-border:  rgba(52, 211, 153, 0.2);
+    --ghost-fg:      #ecfdf5;
+    --ghost-hover:   rgba(52, 211, 153, 0.14);
+    --select-bg:     rgba(52, 211, 153, 0.1);
+    --shadow:        rgba(0, 0, 0, 0.6);
+    --shadow-accent: rgba(52, 211, 153, 0.2);
+    --toast-bg:      #ecfdf5;
+    --toast-fg:      #064e3b;
+}
