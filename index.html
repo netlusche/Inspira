@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zitatgenerator - Weisheiten großer Denker</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #2E86AB;
+            --secondary-color: #A2D7D9;
+            --dark-text: #2C3E50;
+            --light-text: #ECF0F1;
+            --background-dark: #34495E;
+            --background-light: #ECF0F1;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--background-dark);
+            color: var(--light-text);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            text-align: center;
+            padding: 2rem 1rem;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .subtitle {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        main {
+            flex-grow: 1;
+            padding: 2rem 1rem;
+            max-width: 900px;
+            margin: 0 auto;
+            width: 90%;
+        }
+
+        .quote-container {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .quote-container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 7px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .quote-text {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--dark-text);
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .quote-text::before {
+            content: "“";
+            font-size: 3rem;
+            color: var(--primary-color);
+            opacity: 0.2;
+            position: absolute;
+            left: -0.5rem;
+            top: -0.5rem;
+        }
+
+        .author-info {
+            display: flex;
+            align-items: center;
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #eee;
+        }
+
+        .author-image {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 1rem;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .author-details h3 {
+            font-size: 1rem;
+            margin-bottom: 0.25rem;
+            color: var(--primary-color);
+        }
+
+        .author-details p {
+            font-size: 0.9rem;
+            color: #7f8c8d;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: auto;
+            padding-bottom: 2rem;
+        }
+
+        button {
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        #newQuoteBtn {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        #newQuoteBtn:hover {
+            background-color: #1a6b8d;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(46, 134, 171, 0.3);
+        }
+
+        #favoriteBtn {
+            background-color: var(--background-light);
+            color: var(--dark-text);
+            border: 1px solid #ddd;
+        }
+
+        #favoriteBtn:hover {
+            background-color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        footer {
+            text-align: center;
+            padding: 1rem;
+            color: #7f8c8d;
+            font-size: 0.9rem;
+        }
+
+        .loading {
+            display: none;
+            text-align: center;
+            padding: 2rem;
+            color: var(--primary-color);
+            font-size: 1.2rem;
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .quote-text {
+                font-size: 1.4rem;
+            }
+
+            .buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Zitatgenerator</h1>
+        <p class="subtitle">Weisheiten der großen Dichter und Denker</p>
+    </header>
+
+    <main>
+        <section class="quote-container" id="quoteDisplay">
+            <div class="loading">Lade Zitate...</div>
+            <div class="quote-text" id="quoteText"></div>
+            <div class="author-info">
+                <img src="" alt="Author" class="author-image" id="authorImage">
+                <div class="author-details">
+                    <h3 id="authorName"></h3>
+                    <p id="authorDescription"></p>
+                </div>
+            </div>
+        </section>
+
+        <div class="buttons">
+            <button id="newQuoteBtn">
+                <span>Neues Zitat</span>
+                <span>↻</span>
+            </button>
+            <button id="favoriteBtn">
+                <span>Zum Favoriten</span>
+                <span>♥</span>
+            </button>
+        </div>
+    </main>
+
+    <footer>
+        <p>Inspiriert von den greatest minds der Geschichte.</p>
+    </footer>
+
+    <script>
+        // DOM-Elemente
+        const quoteText = document.getElementById('quoteText');
+        const authorName = document.getElementById('authorName');
+        const authorDescription = document.getElementById('authorDescription');
+        const authorImage = document.getElementById('authorImage');
+        const newQuoteBtn = document.getElementById('newQuoteBtn');
+        const favoriteBtn = document.getElementById('favoriteBtn');
+        const loadingIndicator = document.querySelector('.loading');
+
+        // Globale Variable für Zitate
+        let quotes = [];
+
+        // Lade Zitate aus externer JSON-Datei
+        async function loadQuotes() {
+            try {
+                loadingIndicator.style.display = 'block';
+                const response = await fetch('quotes.json');
+                if (!response.ok) {
+                    throw new Error('JSON-Datei nicht gefunden!');
+                }
+                quotes = await response.json();
+                displayRandomQuote();
+            } catch (error) {
+                console.error('Fehler beim Laden der Zitate:', error);
+                quoteText.textContent = "Zitate konnten nicht geladen werden. Bitte überprüfe die Datei 'quotes.json'.";
+                authorName.textContent = "";
+                authorDescription.textContent = "";
+            } finally {
+                loadingIndicator.style.display = 'none';
+            }
+        }
+
+        // Zufälliges Zitat anzeigen
+        function displayRandomQuote() {
+            if (quotes.length === 0) return;
+
+            const randomIndex = Math.floor(Math.random() * quotes.length);
+            const quote = quotes[randomIndex];
+
+            quoteText.textContent = `"${quote.text}"`;
+            authorName.textContent = quote.author;
+            authorDescription.textContent = quote.description || "";
+
+            // Generiere ein Placeholder-Bild mit Initialen
+            const initials = getInitials(quote.author);
+            authorImage.src = `https://ui-avatars.com/api/?name=${initials}&background=random&color=fff`;
+        }
+
+        // Extrahiert die Initialen eines Namens
+        function getInitials(name) {
+            return name.split(' ')
+                .map(part => part.charAt(0).toUpperCase())
+                .join('');
+        }
+
+        // Favoriten-Logik (speichert in LocalStorage)
+        let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+
+        function toggleFavorite() {
+            const currentQuote = quotes.find(q =>
+                q.text === quoteText.textContent.replace(/["]/g, '') &&
+                q.author === authorName.textContent
+            );
+
+            if (!currentQuote) return;
+
+            const isFavorite = favorites.some(fav => fav.text === currentQuote.text);
+
+            if (isFavorite) {
+                favorites = favorites.filter(fav => fav.text !== currentQuote.text);
+                favoriteBtn.innerHTML = '<span>Zum Favoriten</span><span>♥</span>';
+            } else {
+                favorites.push(currentQuote);
+                favoriteBtn.innerHTML = '<span>Entfernen</span><span>❤️</span>';
+            }
+
+            localStorage.setItem('favorites', JSON.stringify(favorites));
+        }
+
+        // Event-Listener
+        newQuoteBtn.addEventListener('click', displayRandomQuote);
+        favoriteBtn.addEventListener('click', toggleFavorite);
+
+        // Initiales Laden der Zitate
+        loadQuotes();
+    </script>
+</body>
+</html>
