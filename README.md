@@ -10,10 +10,11 @@ Ein schlankes, dependency-freies Web-App das täglich inspirierende Zitate von B
 
 - **100 Zitate** — Deutsch & Englisch, von der Antike bis heute
 - **12 animierte Themes** — von Glassmorphism bis Matrix-Regen
-- **Kategorie-Filter** — 25 Kategorien als Pills
+- **Kategorie-Filter** — 7 Kategorien als Pills, Mehrfachauswahl möglich
 - **Autoplay-Modus** — automatischer Zitatwechsel alle 15 Sekunden mit Fortschrittsbalken
 - **Favoriten** — lokal gespeichert via `localStorage`
 - **Kopieren & Teilen** — Clipboard API mit Web Share API Fallback
+- **Social Share** — WhatsApp, Signal, Telegram, Facebook, Reddit, Link kopieren
 - **Responsive** — funktioniert auf Desktop und Mobile
 - **Kein Build-Step** — reines HTML, CSS und JavaScript
 
@@ -74,14 +75,16 @@ Zitate leben in `quotes.json`. Jeder Eintrag folgt diesem Schema:
 }
 ```
 
-`lang` ist `"de"` oder `"en"`. `category` erscheint automatisch als Filter-Pill.
+`lang` ist `"de"` oder `"en"`. `category` erscheint automatisch als Filter-Pill (Mehrfachauswahl).
+
+Die 7 vorhandenen Kategorien: `Achtsamkeit & Innere Ruhe`, `Kreativität & Inspiration`, `Lebensweisheit & Sinn`, `Liebe & Mitgefühl`, `Mut & Resilienz`, `Selbst & Identität`, `Veränderung & Wachstum`.
 
 ---
 
 ## Projektstruktur
 
 ```
-quote-generator/
+Inspira/
 ├── index.html          # Markup (keine Logik)
 ├── quotes.json         # Zitate-Daten
 ├── css/
@@ -89,7 +92,7 @@ quote-generator/
 │   └── app.css         # Layout, Komponenten, Animationen
 └── js/
     ├── theme.js        # Theme-Wechsel & localStorage
-    ├── app.js          # Kernlogik (Quotes, Favoriten, Filter, Autoplay)
+    ├── app.js          # Kernlogik (Quotes, Favoriten, Filter, Autoplay, Share)
     └── effects.js      # Canvas-Animationen (Matrix, Aurora, Underwater)
 ```
 

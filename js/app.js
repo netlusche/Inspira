@@ -39,7 +39,7 @@
     var quotes          = [];
     var currentQuote    = null;
     var favorites       = [];
-    var activeCategory  = 'alle';
+    var activeCategories = [];   // leer = alle
     var autoplayActive  = false;
     var autoplayTimer   = null;
     var AUTOPLAY_MS     = 15000;
@@ -119,8 +119,18 @@
        KATEGORIE-FILTER
     ============================================================ */
     function getFilteredQuotes() {
-        if (activeCategory === 'alle') return quotes;
-        return quotes.filter(function (q) { return q.category === activeCategory; });
+        if (!activeCategories.length) return quotes;
+        return quotes.filter(function (q) {
+            return activeCategories.indexOf(q.category) !== -1;
+        });
+    }
+
+    function syncPillStates() {
+        var allPill = categoryFilterEl.querySelector('[data-cat="alle"]');
+        if (allPill) allPill.classList.toggle('active', activeCategories.length === 0);
+        categoryFilterEl.querySelectorAll('.cat-pill:not([data-cat="alle"])').forEach(function (p) {
+            p.classList.toggle('active', activeCategories.indexOf(p.getAttribute('data-cat')) !== -1);
+        });
     }
 
     function initCategoryFilter() {
@@ -132,16 +142,43 @@
         cats.sort();
 
         categoryFilterEl.innerHTML = '';
-        ['Alle'].concat(cats).forEach(function (cat) {
-            var key = cat === 'Alle' ? 'alle' : cat;
+
+        // "Alle"-Pill
+        var allBtn = document.createElement('button');
+        allBtn.className = 'cat-pill active';
+        allBtn.textContent = 'Alle';
+        allBtn.setAttribute('data-cat', 'alle');
+        allBtn.setAttribute('aria-pressed', 'true');
+        allBtn.addEventListener('click', function () {
+            activeCategories = [];
+            syncPillStates();
+            showRandomQuote();
+            if (autoplayActive) resetAutoplayBar();
+        });
+        categoryFilterEl.appendChild(allBtn);
+
+        // Kategorie-Pills
+        cats.forEach(function (cat) {
             var btn = document.createElement('button');
-            btn.className = 'cat-pill' + (key === activeCategory ? ' active' : '');
+            btn.className = 'cat-pill';
             btn.textContent = cat;
-            btn.setAttribute('data-cat', key);
+            btn.setAttribute('data-cat', cat);
+            btn.setAttribute('aria-pressed', 'false');
             btn.addEventListener('click', function () {
-                categoryFilterEl.querySelectorAll('.cat-pill').forEach(function (p) { p.classList.remove('active'); });
-                btn.classList.add('active');
-                activeCategory = key;
+                var idx = activeCategories.indexOf(cat);
+                if (idx === -1) {
+                    activeCategories.push(cat);
+                } else {
+                    activeCategories.splice(idx, 1);
+                }
+                // Alle deaktiviert → zurück auf "Alle"
+                if (activeCategories.length === 0) {
+                    syncPillStates();
+                    showRandomQuote();
+                    if (autoplayActive) resetAutoplayBar();
+                    return;
+                }
+                syncPillStates();
                 showRandomQuote();
                 if (autoplayActive) resetAutoplayBar();
             });
@@ -388,6 +425,41 @@
     }
 
     /* ============================================================
+       SHARE-LEISTE (App teilen)
+    ============================================================ */
+    function initShareButtons() {
+        var ogUrl = document.querySelector('meta[property="og:url"]');
+        var appUrl = (ogUrl && ogUrl.getAttribute('content') && ogUrl.getAttribute('content').indexOf('DEINE_DOMAIN') === -1)
+            ? ogUrl.getAttribute('content')
+            : window.location.href;
+
+        var appText = 'Inspira – Weisheiten, die bewegen';
+        var encodedUrl  = encodeURIComponent(appUrl);
+        var encodedText = encodeURIComponent(appText + '\n' + appUrl);
+
+        var btnWA  = document.getElementById('shareWhatsApp');
+        var btnSig = document.getElementById('shareSignal');
+        var btnTG  = document.getElementById('shareTelegram');
+        var btnFB  = document.getElementById('shareFacebook');
+        var btnRed = document.getElementById('shareReddit');
+        var btnCopy= document.getElementById('shareCopyLink');
+
+        if (btnWA)  btnWA.href  = 'https://wa.me/?text=' + encodedText;
+        if (btnSig) btnSig.href = 'sgnl://send?text=' + encodedText;
+        if (btnTG)  btnTG.href  = 'https://t.me/share/url?url=' + encodedUrl + '&text=' + encodeURIComponent(appText);
+        if (btnFB)  btnFB.href  = 'https://www.facebook.com/sharer/sharer.php?u=' + encodedUrl;
+        if (btnRed) btnRed.href = 'https://reddit.com/submit?url=' + encodedUrl + '&title=' + encodeURIComponent(appText);
+
+        if (btnCopy) {
+            btnCopy.addEventListener('click', function () {
+                copyToClipboard(appUrl)
+                    .then(function () { showToast('Link kopiert ⎘'); })
+                    .catch(function () { showToast('Kopieren nicht möglich'); });
+            });
+        }
+    }
+
+    /* ============================================================
        ZITATE LADEN & INITIALISIERUNG
     ============================================================ */
     function init() {
@@ -418,5 +490,6 @@
     favBtn.addEventListener('click', toggleFav);
     autoplayBtn.addEventListener('click', toggleAutoplay);
 
+    initShareButtons();
     init();
 })();

@@ -569,7 +569,51 @@ body {
     font-size: 0.71rem;
     color: var(--muted);
     opacity: 0.5;
+    text-align: center;
     transition: color 0.35s;
+}
+
+/* ----------------------------------------------------------------
+   SHARE BAR
+---------------------------------------------------------------- */
+.share-bar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.55rem;
+    margin-bottom: 1.25rem;
+}
+
+.share-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    border: none;
+    cursor: pointer;
+    color: #fff;
+    text-decoration: none;
+    transition: transform 0.15s ease, opacity 0.15s ease;
+    flex-shrink: 0;
+}
+
+.share-btn:hover  { transform: scale(1.10); opacity: 0.92; }
+.share-btn:active { transform: scale(0.96); }
+
+.share-whatsapp { background: #25D366; }
+.share-signal   { background: #3A76F0; }
+.share-telegram { background: #2AABEE; }
+.share-facebook { background: #1877F2; }
+.share-reddit   { background: #FF4500; }
+.share-copy     { background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.18); }
+
+[data-theme="hell"] .share-copy,
+[data-theme="papier"] .share-copy {
+    background: rgba(0,0,0,0.08);
+    border-color: rgba(0,0,0,0.15);
+    color: #333;
 }
 
 /* ================================================================
@@ -768,11 +812,31 @@ body {
 /* ================================================================
    CATEGORY FILTER
 ================================================================ */
+.category-filter-wrap {
+    width: 100%;
+    max-width: 640px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.category-filter-label {
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--text);
+    opacity: 0.55;
+    margin-bottom: 0.65rem;
+    display: block;
+}
+
 .category-filter {
     display: flex;
     flex-wrap: wrap;
     gap: 0.45rem;
-    margin-bottom: 1.5rem;
+    justify-content: center;
 }
 
 .cat-pill {
@@ -784,8 +848,9 @@ body {
     font-size: 0.75rem;
     font-family: inherit;
     cursor: pointer;
-    transition: background 0.2s, color 0.2s, border-color 0.2s;
+    transition: background 0.2s, color 0.2s, border-color 0.2s, box-shadow 0.2s;
     white-space: nowrap;
+    flex-shrink: 0;
 }
 .cat-pill:hover {
     background: var(--ghost-hover);
@@ -795,6 +860,7 @@ body {
     background: var(--accent);
     border-color: var(--accent);
     color: var(--accent-fg);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 25%, transparent);
 }
 
 /* ================================================================
