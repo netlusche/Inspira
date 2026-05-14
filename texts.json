@@ -1,0 +1,182 @@
+[
+  {
+    "id": "buddha-dhammapada",
+    "title": "Dhammapada — Auswahl",
+    "author": "Buddha / Pali-Kanon",
+    "description": "Mind is the forerunner of all actions. All deeds are led by mind, created by mind.",
+    "category": "Achtsamkeit & Innere Ruhe",
+    "lang": "en",
+    "file": "markdown/buddha-dhammapada.md"
+  },
+  {
+    "id": "einstein-wie-ich-die-welt-sehe",
+    "title": "The World As I See It",
+    "author": "Albert Einstein",
+    "description": "Strange is our situation here upon earth. Each of us comes for a short visit, not knowing why, yet sometimes seeming to …",
+    "category": "Lebensweisheit & Sinn",
+    "lang": "en",
+    "file": "markdown/einstein-wie-ich-die-welt-sehe.md"
+  },
+  {
+    "id": "epiktet-enchiridion",
+    "title": "Enchiridion — Handbüchlein der Moral (Auswahl)",
+    "author": "Epiktet",
+    "description": "Die ersten zehn Kapitel des stoischen Handbuchs: Was liegt in unserer Macht, was nicht — und wie wir damit in Frieden leben.",
+    "category": "Mut & Resilienz",
+    "lang": "en",
+    "file": "markdown/epiktet-enchiridion.md"
+  },
+  {
+    "id": "gibran-the-prophet",
+    "title": "The Prophet — On Love, On Children, On Joy and Sorrow",
+    "author": "Khalil Gibran",
+    "description": "Drei Kapitel aus Gibrans prophetischem Meisterwerk: Über die Liebe, die Kinder und Freude und Leid — zeitlose Weisheit in poetischer Prosa.",
+    "category": "Liebe & Mitgefühl",
+    "lang": "en",
+    "file": "markdown/gibran-the-prophet.md"
+  },
+  {
+    "id": "goethe-mignon",
+    "title": "Mignon (Kennst du das Land…)",
+    "author": "Johann Wolfgang von Goethe",
+    "description": "Kennst du das Land, wo die Zitronen blühn,",
+    "category": "Selbst & Identität",
+    "lang": "de",
+    "file": "markdown/goethe-mignon.md"
+  },
+  {
+    "id": "goethe-selige-sehnsucht",
+    "title": "Selige Sehnsucht",
+    "author": "Johann Wolfgang von Goethe",
+    "description": "Sagt es niemand, nur den Weisen,",
+    "category": "Veränderung & Wachstum",
+    "lang": "de",
+    "file": "markdown/goethe-selige-sehnsucht.md"
+  },
+  {
+    "id": "hafiz-divan",
+    "title": "Poems from the Divan of Hafiz — Auswahl",
+    "author": "Hafiz (Schams ud-Din Mohammad Hafez)",
+    "description": "Fünf ausgewählte Gedichte aus dem Divan des persischen Mystikers Hafiz — von Wein, Sehnsucht und der Schönheit des Vergänglichen.",
+    "category": "Liebe & Mitgefühl",
+    "lang": "en",
+    "file": "markdown/hafiz-divan.md"
+  },
+  {
+    "id": "hildegard-von-bingen-scivias",
+    "title": "O Virtus Sapientiae — Hymnus und Visionen",
+    "author": "Hildegard von Bingen",
+    "description": "O Virtus Sapientiae,",
+    "category": "Kreativität & Inspiration",
+    "lang": "de",
+    "file": "markdown/hildegard-von-bingen-scivias.md"
+  },
+  {
+    "id": "laotse-tao-te-ching",
+    "title": "Tao Te Ching — Auswahl",
+    "author": "Laozi / Lao-tse",
+    "description": "The highest excellence is like water. Water benefits ten thousand things and does not compete. It dwells in places that …",
+    "category": "Achtsamkeit & Innere Ruhe",
+    "lang": "en",
+    "file": "markdown/laotse-tao-te-ching.md"
+  },
+  {
+    "id": "marcus-aurelius-meditationen",
+    "title": "Meditationen — Auswahl aus Buch II, IV und V",
+    "author": "Marcus Aurelius",
+    "description": "Begin the morning by saying to thyself, I shall meet with the busy-body, the ungrateful, arrogant, deceitful, envious, u…",
+    "category": "Achtsamkeit & Innere Ruhe",
+    "lang": "en",
+    "file": "markdown/marcus-aurelius-meditationen.md"
+  },
+  {
+    "id": "meister-eckhart-abgeschiedenheit",
+    "title": "Predigten — Auswahl",
+    "author": "Meister Eckhart",
+    "description": "God is nearer to me than I am to myself; my existence depends on the nearness and presence of God. He is also near thing…",
+    "category": "Achtsamkeit & Innere Ruhe",
+    "lang": "en",
+    "file": "markdown/meister-eckhart-abgeschiedenheit.md"
+  },
+  {
+    "id": "rilke-briefe-an-einen-jungen-dichter",
+    "title": "Briefe an einen jungen Dichter (Auswahl)",
+    "author": "Rainer Maria Rilke",
+    "description": "Ich möchte Sie bitten, so gut ich es kann, Geduld zu haben gegen alles Ungelöste in Ihrem Herzen und zu versuchen, die F…",
+    "category": "Kreativität & Inspiration",
+    "lang": "de",
+    "file": "markdown/rilke-briefe-an-einen-jungen-dichter.md"
+  },
+  {
+    "id": "rilke-duineser-elegien",
+    "title": "Duineser Elegien — Erste und Neunte Elegie (Auswahl)",
+    "author": "Rainer Maria Rilke",
+    "description": "Wer, wenn ich schriee, hörte mich denn aus der Engel Ordnungen? und gesetzt selbst, es nähme einer mich plötzlich ans He…",
+    "category": "Selbst & Identität",
+    "lang": "de",
+    "file": "markdown/rilke-duineser-elegien.md"
+  },
+  {
+    "id": "rumi-das-lied-des-rohrs",
+    "title": "Gedichte — Auswahl aus dem Werk Rumis",
+    "author": "Jalal ad-Din Muhammad Rumi",
+    "description": "O lovers, O lovers, it is time to abandon the world:",
+    "category": "Liebe & Mitgefühl",
+    "lang": "en",
+    "file": "markdown/rumi-das-lied-des-rohrs.md"
+  },
+  {
+    "id": "seneca-de-brevitate-vitae",
+    "title": "De Brevitate Vitae — Über die Kürze des Lebens",
+    "author": "Lucius Annaeus Seneca",
+    "description": "It is not that we have a short time to live, but that we waste a great deal of it. Life is long enough, and a sufficient…",
+    "category": "Lebensweisheit & Sinn",
+    "lang": "en",
+    "file": "markdown/seneca-de-brevitate-vitae.md"
+  },
+  {
+    "id": "seneca-epistulae-morales",
+    "title": "Epistulae Morales — Briefe an Lucilius (Auswahl)",
+    "author": "Lucius Annaeus Seneca",
+    "description": "Greetings from Seneca to his friend Lucilius.",
+    "category": "Lebensweisheit & Sinn",
+    "lang": "en",
+    "file": "markdown/seneca-epistulae-morales.md"
+  },
+  {
+    "id": "zhuangzi-schmetterlingstraum",
+    "title": "Der Schmetterlingstraum und Koch Ding",
+    "author": "Zhuangzi",
+    "description": "Once upon a time, I, Chuang Tzu, dreamt I was a butterfly, fluttering hither and thither, to all intents and purposes a …",
+    "category": "Selbst & Identität",
+    "lang": "en",
+    "file": "markdown/zhuangzi-schmetterlingstraum.md"
+  },
+  {
+    "id": "nietzsche-zarathustra",
+    "title": "Also sprach Zarathustra — Auswahl",
+    "author": "Friedrich Nietzsche",
+    "description": "Drei Verwandlungen nenne ich euch des Geistes: wie der Geist zum Kamele wird, und zum Löwen das Kameel, und zum Kinde zuletzt der Löwe.",
+    "category": "Philosophie & Weisheit",
+    "lang": "de",
+    "file": "markdown/nietzsche-zarathustra.md"
+  },
+  {
+    "id": "tagore-gitanjali",
+    "title": "Gitanjali — Song Offerings",
+    "author": "Rabindranath Tagore",
+    "description": "Thou hast made me endless, such is thy pleasure. This frail vessel thou emptiest again and again, and fillest it ever with fresh life.",
+    "category": "Mystik & Spiritualität",
+    "lang": "en",
+    "file": "markdown/tagore-gitanjali.md"
+  },
+  {
+    "id": "osho-bewusstsein",
+    "title": "Bewusstsein: Die Stille im Innern",
+    "author": "Osho",
+    "description": "Meditation bedeutet nicht, etwas zu tun. Meditation bedeutet, nichts zu tun — einfach zu sein. Es ist die Kunst des Seins, nicht des Werdens. Du musst ...",
+    "category": "Achtsamkeit & Innere Ruhe",
+    "lang": "de",
+    "file": "markdown/osho-bewusstsein.md"
+  }
+]

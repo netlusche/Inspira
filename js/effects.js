@@ -20,6 +20,9 @@
         canvas.height = window.innerHeight;
         if (activeEffect === 'matrix')     initMatrix();
         if (activeEffect === 'underwater') initBubbles();
+        if (activeEffect === 'sakura')     initSakura();
+        if (activeEffect === 'cosmos')     initCosmos();
+        if (activeEffect === 'westeros')   initEmbers();
     }
 
     /* ════════════════════════════════════════
@@ -160,12 +163,189 @@
     }
 
     /* ════════════════════════════════════════
+       SAKURA — FALLING PETALS
+    ════════════════════════════════════════ */
+    var petals = [];
+    var PETAL_COUNT = 48;
+
+    function makePetal(randomY) {
+        return {
+            x:        Math.random() * canvas.width,
+            y:        randomY ? Math.random() * canvas.height : -16,
+            size:     5 + Math.random() * 9,
+            speedY:   0.35 + Math.random() * 0.7,
+            speedX:   (Math.random() - 0.5) * 0.4,
+            rotation: Math.random() * Math.PI * 2,
+            rotSpd:   (Math.random() - 0.5) * 0.035,
+            wobble:   Math.random() * Math.PI * 2,
+            wobbleSpd:0.018 + Math.random() * 0.022,
+            alpha:    0.45 + Math.random() * 0.45,
+            hue:      338 + Math.random() * 18
+        };
+    }
+
+    function initSakura() {
+        petals = [];
+        for (var i = 0; i < PETAL_COUNT; i++) petals.push(makePetal(true));
+    }
+
+    function drawSakura() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        for (var i = 0; i < petals.length; i++) {
+            var p = petals[i];
+            p.y        += p.speedY;
+            p.wobble   += p.wobbleSpd;
+            p.rotation += p.rotSpd;
+            p.x        += p.speedX + Math.sin(p.wobble) * 0.55;
+
+            if (p.y > canvas.height + 20) {
+                var n = makePetal(false);
+                p.x = n.x; p.y = n.y; p.size = n.size;
+                p.speedY = n.speedY; p.speedX = n.speedX;
+                p.rotation = n.rotation; p.rotSpd = n.rotSpd;
+                p.wobble = n.wobble; p.wobbleSpd = n.wobbleSpd;
+                p.alpha = n.alpha; p.hue = n.hue;
+            }
+
+            ctx.save();
+            ctx.translate(p.x, p.y);
+            ctx.rotate(p.rotation);
+            ctx.globalAlpha = p.alpha;
+            ctx.beginPath();
+            ctx.ellipse(0, 0, p.size, p.size * 0.58, 0, 0, Math.PI * 2);
+            ctx.fillStyle = 'hsl(' + p.hue + ',75%,86%)';
+            ctx.fill();
+            ctx.restore();
+        }
+    }
+
+    /* ════════════════════════════════════════
+       COSMOS — TWINKLING STARS + NEBULA
+    ════════════════════════════════════════ */
+    var stars = [];
+    var STAR_COUNT = 220;
+
+    function makeStar() {
+        var rnd = Math.random();
+        return {
+            x:     Math.random() * canvas.width,
+            y:     Math.random() * canvas.height,
+            r:     0.4 + Math.random() * 1.6,
+            base:  0.25 + Math.random() * 0.75,
+            phase: Math.random() * Math.PI * 2,
+            spd:   0.4 + Math.random() * 1.4,
+            warm:  rnd > 0.85 ? 1 : (rnd > 0.65 ? 2 : 0) // 0=white 1=warm 2=cool
+        };
+    }
+
+    function initCosmos() {
+        stars = [];
+        for (var i = 0; i < STAR_COUNT; i++) stars.push(makeStar());
+    }
+
+    var NEBULAS = [
+        { xr: 0.18, yr: 0.28, rr: 0.30, c: [80,  40, 200] },
+        { xr: 0.82, yr: 0.62, rr: 0.24, c: [180, 40, 150] },
+        { xr: 0.50, yr: 0.85, rr: 0.20, c: [40,  80, 200] },
+        { xr: 0.68, yr: 0.18, rr: 0.16, c: [100, 20, 180] }
+    ];
+
+    function drawCosmos(ts) {
+        var t = ts * 0.001;
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        for (var n = 0; n < NEBULAS.length; n++) {
+            var nb = NEBULAS[n];
+            var nx = canvas.width  * nb.xr;
+            var ny = canvas.height * nb.yr;
+            var nr = canvas.width  * nb.rr;
+            var grad = ctx.createRadialGradient(nx, ny, 0, nx, ny, nr);
+            grad.addColorStop(0,   'rgba(' + nb.c[0] + ',' + nb.c[1] + ',' + nb.c[2] + ',0.07)');
+            grad.addColorStop(1,   'rgba(' + nb.c[0] + ',' + nb.c[1] + ',' + nb.c[2] + ',0)');
+            ctx.beginPath();
+            ctx.arc(nx, ny, nr, 0, Math.PI * 2);
+            ctx.fillStyle = grad;
+            ctx.fill();
+        }
+
+        for (var i = 0; i < stars.length; i++) {
+            var s = stars[i];
+            var a = s.base * (0.5 + 0.5 * Math.sin(t * s.spd + s.phase));
+            var color = s.warm === 1 ? '255,230,200' : (s.warm === 2 ? '200,220,255' : '255,255,255');
+            ctx.beginPath();
+            ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+            ctx.fillStyle = 'rgba(' + color + ',' + a + ')';
+            ctx.fill();
+        }
+    }
+
+    /* ════════════════════════════════════════
+       WESTEROS — FLOATING EMBERS
+    ════════════════════════════════════════ */
+    var embers = [];
+    var EMBER_COUNT = 55;
+
+    function makeEmber(randomY) {
+        return {
+            x:        Math.random() * canvas.width,
+            y:        randomY ? Math.random() * canvas.height : canvas.height + 8,
+            r:        0.8 + Math.random() * 2.2,
+            speedY:   0.3 + Math.random() * 0.75,
+            speedX:   (Math.random() - 0.5) * 0.38,
+            wobble:   Math.random() * Math.PI * 2,
+            wobbleSpd:0.022 + Math.random() * 0.038,
+            alpha:    0.35 + Math.random() * 0.55,
+            hue:      14 + Math.random() * 24
+        };
+    }
+
+    function initEmbers() {
+        embers = [];
+        for (var i = 0; i < EMBER_COUNT; i++) embers.push(makeEmber(true));
+    }
+
+    function drawWesteros() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        for (var i = 0; i < embers.length; i++) {
+            var e = embers[i];
+            e.y       -= e.speedY;
+            e.wobble  += e.wobbleSpd;
+            e.x       += e.speedX + Math.sin(e.wobble) * 0.55;
+            e.alpha   -= 0.0008;
+
+            if (e.y < -10 || e.alpha <= 0.02) {
+                var n = makeEmber(false);
+                e.x = n.x; e.y = n.y; e.r = n.r;
+                e.speedY = n.speedY; e.speedX = n.speedX;
+                e.wobble = n.wobble; e.wobbleSpd = n.wobbleSpd;
+                e.alpha = n.alpha; e.hue = n.hue;
+            }
+
+            var grd = ctx.createRadialGradient(e.x, e.y, 0, e.x, e.y, e.r * 3.5);
+            grd.addColorStop(0, 'hsla(' + e.hue + ',95%,65%,' + e.alpha + ')');
+            grd.addColorStop(1, 'hsla(' + e.hue + ',95%,65%,0)');
+            ctx.beginPath();
+            ctx.arc(e.x, e.y, e.r * 3.5, 0, Math.PI * 2);
+            ctx.fillStyle = grd;
+            ctx.fill();
+
+            ctx.beginPath();
+            ctx.arc(e.x, e.y, e.r, 0, Math.PI * 2);
+            ctx.fillStyle = 'hsla(' + e.hue + ',100%,88%,' + Math.min(e.alpha * 1.4, 1) + ')';
+            ctx.fill();
+        }
+    }
+
+    /* ════════════════════════════════════════
        ENGINE
     ════════════════════════════════════════ */
     var EFFECTS = {
         matrix:      { start: startMatrix,     draw: drawMatrix,    needsTs: true  },
         polarlichter:{ start: function () {},   draw: drawAurora,    needsTs: true  },
-        underwater:  { start: startUnderwater,  draw: drawUnderwater,needsTs: false }
+        underwater:  { start: startUnderwater,  draw: drawUnderwater,needsTs: false },
+        sakura:      { start: initSakura,       draw: drawSakura,    needsTs: false },
+        cosmos:      { start: initCosmos,       draw: drawCosmos,    needsTs: true  },
+        westeros:    { start: initEmbers,       draw: drawWesteros,  needsTs: false }
     };
 
     function stopEffect() {

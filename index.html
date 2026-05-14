@@ -45,8 +45,8 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/themes.css">
-    <link rel="stylesheet" href="css/app.css">
+    <link rel="stylesheet" href="css/themes.css?v=4">
+    <link rel="stylesheet" href="css/app.css?v=4">
 
     <!-- Theme vor dem ersten Render setzen, um Flackern zu verhindern -->
     <script>
@@ -64,10 +64,10 @@
     <div class="wrapper">
 
         <header class="site-header">
-            <div>
+            <button class="brand-btn" id="brandHome" aria-label="Zur Startseite">
                 <h1 class="brand-title">✦ Inspira</h1>
                 <p class="brand-subtitle">Weisheiten, die bewegen</p>
-            </div>
+            </button>
             <div class="theme-wrap">
                 <select class="theme-select" id="themeSelect" aria-label="Theme auswählen">
                     <option value="dunkel">Dunkel</option>
@@ -82,11 +82,29 @@
                     <option value="polarlichter">Polarlichter</option>
                     <option value="underwater">Underwater</option>
                     <option value="papier">Papier</option>
+                    <option value="steampunk">Steampunk</option>
+                    <option value="westeros">Westeros</option>
+                    <option value="sakura">Sakura</option>
+                    <option value="cosmos">Cosmos</option>
+                    <option value="wueste">Wüste</option>
                 </select>
             </div>
         </header>
 
+        <!-- Section Navigation -->
+        <nav class="section-nav" role="tablist" aria-label="Inhaltsbereich wählen">
+            <button class="section-pill active" data-section="quotes" role="tab" aria-selected="true">
+                <span aria-hidden="true">❝</span> Zitate
+            </button>
+            <button class="section-pill" data-section="texts" role="tab" aria-selected="false">
+                <span aria-hidden="true">☰</span> Texte
+            </button>
+        </nav>
+
         <main class="site-main">
+
+        <!-- ── SEKTION: ZITATE ── -->
+        <div id="sectionQuotes">
 
             <article class="quote-card" id="quoteCard" aria-label="Aktuelles Zitat" style="position:relative;overflow:hidden;">
                 <div class="quote-card-top">
@@ -148,6 +166,28 @@
                 </div>
             </section>
 
+            <div id="featuredText" class="featured-text-wrap"></div>
+
+        </div><!-- /#sectionQuotes -->
+
+        <!-- ── SEKTION: TEXTE ── -->
+        <div id="sectionTexts" hidden>
+
+            <div id="textsLibrary">
+                <div class="category-filter-wrap">
+                    <span class="category-filter-label" aria-hidden="true">Kategorien:</span>
+                    <div class="category-filter" id="textsFilter" role="group" aria-label="Nach Kategorie filtern"></div>
+                </div>
+                <div class="texts-grid" id="textsGrid"></div>
+            </div>
+
+            <div id="textsReader" hidden>
+                <button class="reader-back" id="readerBack">← Zurück zur Übersicht</button>
+                <div class="reader-card" id="readerCard"></div>
+            </div>
+
+        </div><!-- /#sectionTexts -->
+
         </main>
 
         <footer class="site-footer">
@@ -178,8 +218,9 @@
 
     <div class="toast" id="toast" role="status" aria-live="polite" aria-atomic="true"></div>
 
-    <script src="js/theme.js"></script>
-    <script src="js/app.js"></script>
-    <script src="js/effects.js"></script>
+    <script src="js/theme.js?v=4"></script>
+    <script src="js/app.js?v=4"></script>
+    <script src="js/effects.js?v=4"></script>
+    <script src="js/texts.js?v=4"></script>
 </body>
 </html>
